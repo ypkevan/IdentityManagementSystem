@@ -6,6 +6,7 @@ import java.io.PrintWriter;
 import java.util.Scanner;
 
 import fr.tbr.iamcore.datamodel.Identity;
+import fr.tbr.iamcore.tests.services.dao.IdentityFileDAO;
 
 public class TestIdentityRecordToFileFromUserInput {
 	
@@ -20,9 +21,11 @@ public class TestIdentityRecordToFileFromUserInput {
 		Identity identity = getIdentityFromInput(scanner);
 		Identity identity2 = getIdentityFromInput(scanner);
 		
-		writeIdentityIntoFile(writer, identity);
+		IdentityFileDAO theDao=new IdentityFileDAO();
+		theDao.create(identity);
+		theDao.create(identity2);
 	
-		writeIdentityIntoFile(writer, identity2);
+		
 		
 		scanner.close();
 		writer.close();
